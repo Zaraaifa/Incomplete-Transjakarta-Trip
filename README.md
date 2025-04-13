@@ -43,6 +43,9 @@ The dataset (`Transjakarta.csv`) includes **37,900 transaction records** from Ap
   - Calculated incomplete rates (e.g., 3.55% overall).
 - **Tools**: Python (`pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy.stats`).
 
+## Dashboard
+Hasil dashboard dapat dilihat [di sini](https://lookerstudio.google.com/reporting/eb960d8a-b71c-479e-80ed-d90e2be66b90)
+
 ## Key Findings
 - **Scale**: 1,344 incomplete journeys (3.55%) caused ~Rp 3,573,250 revenue loss.
 - **Significant Factors**:
@@ -79,8 +82,10 @@ The dataset (`Transjakarta.csv`) includes **37,900 transaction records** from Ap
 ```bash
 # Clone repository
 git clone https://github.com/your-username/transjakarta-incomplete-journey.git
+```
 
-# Install dependencies
+## Install dependencies
+```bash
 pip install pandas numpy matplotlib seaborn scipy
 ```
 
@@ -95,8 +100,9 @@ jupyter notebook Transjakarta_Incomplete_Journey_Analysis.ipynb
 
 ## Project Structure
 ├── Transjakarta_Incomplete_Journey_Analysis.ipynb  # Analysis notebook
-├── Transjakarta.csv                               # Dataset (external)
-└── README.md                                      # Project overview
+├── Transjakarta.csv                                # Dataset (external)
+├── Dashboard_Transjakarta_Incomplete_Journey       # Visualizations 
+└── README.md                                       # Project overview
 
 ## Limitations
 - Limited temporal pattern analysis due to non-significant time factors.
