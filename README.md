@@ -1,10 +1,11 @@
 # Studi Analisis Incomplete Journey: Mengoptimalkan Pendapatan dan Validitas Data Operasional TransJakarta
 
 ## Overview
-This repository contains a Jupyter Notebook analyzing **incomplete journeys** in the Transjakarta public transportation system for April 2023. An *incomplete journey* occurs when a passenger taps in but fails to tap out, leading to missing data and potential revenue loss. The analysis identifies patterns, assesses financial impacts, and proposes strategies to reduce incomplete journeys below the 1.5% Southeast Asia industry standard (2020), supporting Transjakarta’s operational efficiency and Jakarta’s smart city vision.
+Repositori ini berisi Jupyter Notebook yang menganalisis *perjalanan yang tidak lengkap* dalam sistem transportasi umum Transjakarta untuk bulan April 2023. Perjalanan yang tidak lengkap terjadi ketika penumpang melakukan tap in namun tidak melakukan tap out, yang menyebabkan hilangnya data dan potensi kehilangan pendapatan. Analisis ini mengidentifikasi pola, menilai dampak finansial, dan mengusulkan strategi untuk mengurangi perjalanan yang tidak lengkap di bawah 1,5% dari standar industri di Asia Tenggara (2020), yang mendukung efisiensi operasional Transjakarta dan visi kota pintar Jakarta.
+
 
 ## Dataset
-The dataset (`Transjakarta.csv`) includes **37,900 transaction records** from April 2023, detailing passenger journeys. Key columns:
+Dataset (`Transjakarta.csv`) mencakup **37.900 catatan transaksi** dari bulan April 2023, yang merinci perjalanan penumpang. Kolom-kolom kunci:
 
 | Column             | Description                                                  |
 |--------------------|--------------------------------------------------------------|
@@ -19,12 +20,12 @@ The dataset (`Transjakarta.csv`) includes **37,900 transaction records** from Ap
 **Source**: [Google Drive](https://drive.google.com/drive/folders/1p7f4a2tUP1Ek159BUVA2bFkdQUklOe7h?usp=share_link)
 
 ## Objectives
-1. Identify factors significantly correlated with incomplete journeys by corridor and time.
-2. Detect demographic or behavioral patterns predicting incomplete journeys.
-3. Analyze spatial (corridors, stops) and temporal (time, day) characteristics.
-4. Recommend strategies to reduce incomplete journeys below 1.5%.
-
-## Methodology
+1. Mengidentifikasi faktor-faktor yang secara signifikan berkorelasi dengan perjalanan yang tidak lengkap berdasarkan koridor dan waktu.
+2. Mendeteksi pola demografis atau perilaku yang memprediksi perjalanan yang tidak lengkap.
+3. Menganalisis karakteristik spasial (koridor, halte) dan temporal (waktu, hari).
+4. Merekomendasikan strategi untuk mengurangi perjalanan yang tidak lengkap.
+   
+## Metode
 ### Data Preprocessing
 - **Cleaning**: Handled missing `tapOutTime` values and adjusted data types (e.g., `tapInTime` to datetime).
 - **Feature Engineering**:
@@ -35,48 +36,53 @@ The dataset (`Transjakarta.csv`) includes **37,900 transaction records** from Ap
 - **Validation**: Confirmed no duplicates and addressed outliers per statistical best practices.
 
 ### Analysis
-- **Statistical Tests**:
-  - Chi-square for correlations (age, corridor, transport type, etc.).
-  - T-test and Spearman correlation for age impact.
+- **Uji Statistik**:
+  - Chi-square untuk korelasi (usia, koridor, jenis transportasi, dll.).
+  - Uji-t dan korelasi Spearman untuk dampak usia.
 - **EDA**:
-  - Crosstabs and visualizations to explore patterns.
-  - Calculated incomplete rates (e.g., 3.55% overall).
+  - Crosstabs dan visualisasi untuk mengeksplorasi pola.
+  - Tingkat ketidaklengkapan yang dihitung (misalnya, 3,55% secara keseluruhan).
 - **Tools**: Python (`pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy.stats`).
 
 ## Dashboard
 Hasil dashboard dapat dilihat [di sini](https://lookerstudio.google.com/reporting/eb960d8a-b71c-479e-80ed-d90e2be66b90)
 
+## PowerPoint Presenation
+Hasil PowerPoint dapat dilihat [di sini](https://www.canva.com/design/DAGkWYff3i4/9qJBISoJggvueFUfbYSXxw/edit?utm_content=DAGkWYff3i4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+
 ## Key Findings
-- **Scale**: 1,344 incomplete journeys (3.55%) caused ~Rp 3,573,250 revenue loss.
-- **Significant Factors**:
-  - **Age**: Older passengers (>55) have higher rates (4.52%, p=0.002).
-  - **Transport Type**: Mikrotrans shows elevated rates (p<0.001).
-  - **Corridor**: Hotspots include "Kebayoran Lama - Tanah Abang" (p<0.001).
-- **Non-Significant**: Gender, payment method, time, and day type (p>0.05).
-- **Spatial**: Concentrated in Jakarta Selatan and stops like Cervino Village.
-- **Temporal**: No clear time-based patterns (p=0.446 for hours).
-- **Financial**: Many incomplete journeys yield `payAmount=0`.
+- Skala**: 1.344 perjalanan yang tidak lengkap (3,55%) menyebabkan hilangnya pendapatan sebesar ~Rp 3.573.250.
+- Faktor-faktor yang signifikan**:
+  - **Usia**: Penumpang yang berusia lebih tua (&gt;55) memiliki tarif yang lebih tinggi (4,52%, p=0,002).
+  - **Jenis Angkutan**: Mikrotrans menunjukkan tingkat yang lebih tinggi (p&lt;0,001).
+  - **Koridor**: Titik-titik rawan termasuk “Kebayoran Lama - Tanah Abang” (p&lt;0,001).
+- **Tidak Signifikan**: Jenis kelamin, metode pembayaran, waktu, dan jenis hari (p&gt;0,05).
+- **Spasial**: Terkonsentrasi di Jakarta Selatan dan halte-halte seperti Kampung Cervino.
+- **Temporal**: Tidak ada pola yang jelas berdasarkan waktu (p=0,446 untuk jam).
+- **Finansial**: Banyak perjalanan yang tidak lengkap menghasilkan `jumlahPembayaran=0`.
 
 ## Recommendations
-1. **Age-Targeted Education**:
-   - Install clear tap-in/tap-out guides at stops.
-   - Deploy assistants for <18 and >55 passengers during peaks.
-   - Add app tutorials for new users.
-2. **Transport Type Audit**:
-   - Inspect Mikrotrans tap-out devices.
-   - Standardize procedures with reminders.
-   - Test auto tap-out systems.
-3. **Corridor/Stop Upgrades**:
-   - Fix devices at top 5-10 stops.
-   - Improve signage and access.
-   - Add buses to reduce peak crowding.
-4. **Monitoring**:
-   - Build real-time incomplete journey dashboard.
-   - Conduct quarterly statistical reviews.
-   - Enable app-based passenger feedback.
-5. **Awareness Campaigns**:
-   - Run social media campaigns (“Tap-In, Tap-Out!”).
-   - Add in-bus tap-out reminders.
+1. **Pendidikan yang ditargetkan untuk usia tertentu:
+   - Pasang panduan tap-in/tap-out yang jelas di halte.
+   - Menugaskan asisten untuk <18 and >55 penumpang selama jam-jam sibuk.
+   - Tambahkan tutorial aplikasi untuk pengguna baru.
+2. Audit Jenis Angkutan **Audit Jenis Angkutan**:
+   - Memeriksa perangkat tap-out Mikrotrans.
+   - Standarisasi prosedur dengan pengingat.
+   - Menguji sistem tap-out otomatis.
+3. **Peningkatan Koridor/Halte**:
+   - Perbaiki perangkat di 5-10 halte teratas.
+   - Perbaiki rambu dan akses.
+   - Menambah bus untuk mengurangi kepadatan puncak.
+4. **Pemantauan**:
+   - Buatlah dasbor perjalanan yang tidak lengkap secara real-time.
+   - Melakukan tinjauan statistik triwulanan.
+   - Mengaktifkan umpan balik penumpang berbasis aplikasi.
+5. **Kampanye Kesadaran**:
+   - Menjalankan kampanye media sosial (“Tap-In, Tap-Out!”).
+   - Tambahkan pengingat tap-out di dalam bus.
+     
 
 ## Installation
 ```bash
@@ -90,13 +96,13 @@ pip install pandas numpy matplotlib seaborn scipy
 ```
 
 ## Usage
-1. Download Transjakarta.csv from the source link.
-2. Place it in the project directory.
-3. Open Transjakarta_Incomplete_Journey_Analysis.ipynb in Jupyter:
+1. Download Transjakarta.csv dari tautan sumber data.
+2. Tempatkan di direktori proyek.
+3. Buka Transjakarta_Incomplete_Journey_Analysis.ipynb di Jupyter:
 ```bash
 jupyter notebook Transjakarta_Incomplete_Journey_Analysis.ipynb
 ```
-4. Run all cells to reproduce results.
+4. Jalankan seluruh kolom untuk memperoleh hasil.
 
 ## Project Structure
 ├── Transjakarta_Incomplete_Journey_Analysis.ipynb  # Analysis notebook
@@ -105,18 +111,17 @@ jupyter notebook Transjakarta_Incomplete_Journey_Analysis.ipynb
 └── README.md                                       # Project overview
 
 ## Limitations
-- Limited temporal pattern analysis due to non-significant time factors.
-- Behavioral variables (e.g., frequency) underutilized.
-- Incomplete dashboard details (e.g., specific stop names).
+- Analisis pola temporal yang terbatas karena faktor waktu yang tidak signifikan.
+- Rincian dasbor yang tidak lengkap (misalnya, nama halte tertentu).
 
 ## Future Work
-- Analyze temporal patterns (e.g., hourly trends).
-- Explore behavioral predictors (e.g., new vs. loyal users).
-- Simulate recommendation impacts.
-- Pilot interventions in high-risk corridors.
+- Menganalisis pola temporal (misalnya, tren per jam).
+- Jelajahi prediktor perilaku (misalnya, pengguna baru vs. pengguna setia).
+- Mensimulasikan dampak rekomendasi.
+- Menguji coba intervensi di koridor berisiko tinggi.
 
 ## Lisence
-For educational use only. Dataset usage complies with Transjakarta’s terms.
+Hanya untuk penggunaan pendidikan. Penggunaan dataset sesuai dengan ketentuan Transjakarta.
 
 ## Contact
-Open an issue or contact [abdillah.zaraa@gmail.com] for questions.
+Buka masalah atau hubungi [abdillah.zaraa@gmail.com] untuk pertanyaan.
